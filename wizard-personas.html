@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ASH|Humano</title>
+    
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================
+           VARIABLES - PALETA LIMPIA Y PROFESIONAL
+           ============================================ */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --accent: #C9A961;
+            --accent-light: #D4AF37;
+            --border: #E2E8F0;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            --hover-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+            --success: #10B981;
+            --error: #EF4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .wizard-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* ============================================
+           HEADER - SIN BOTÓN VOLVER
+           ============================================ */
+        .wizard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-iee {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .product-badge {
+            background: var(--accent);
+            color: white;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           FORMULARIO DE REGISTRO CON VALIDACIÓN CURP
+           ============================================ */
+        .registration-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .registration-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .registration-title i {
+            color: var(--accent);
+        }
+
+        .registration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            background: var(--bg-secondary);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+        }
+
+        .form-hint {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           PROGRESS - SIN DIMENSIÓN VISIBLE
+           ============================================ */
+        .progress-section {
+            margin-bottom: 32px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-percent {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.4s ease;
+            border-radius: 3px;
+        }
+
+        /* ============================================
+           QUESTION CARD - SOLO CÓDIGO D1, D2, D3...
+           ============================================ */
+        .question-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .dimension-code {
+            display: inline-block;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .question-text {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+
+        /* ============================================
+           OPTIONS - BOTONES INVERSOS (DORADO FONDO / TEXTO BLANCO)
+           ============================================ */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .option-card:hover {
+            border-color: var(--accent);
+            background: #FFF9F0;
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .option-card.selected {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-letter {
+            background: white;
+            border-color: white;
+            color: var(--accent);
+        }
+
+        .option-text {
+            font-size: 15px;
+            color: var(--text-primary);
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .option-card.selected .option-text {
+            color: white;
+        }
+
+        /* ============================================
+           NAVIGATION - SIN BOTÓN ANTERIOR
+           ============================================ */
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 32px;
+            position: relative;
+        }
+
+        .btn-next {
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+            padding: 14px 42px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 1px;
+        }
+
+        .btn-next:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .counter {
+            position: absolute;
+            right: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .counter span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           MAPA DE DIMENSIONES (CÓDIGOS)
+           ============================================ */
+        .dimension-map {
+            display: none;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .wizard-container {
+                padding: 24px 16px;
+            }
+            
+            .question-card {
+                padding: 24px;
+            }
+            
+            .question-text {
+                font-size: 20px;
+            }
+            
+            .registration-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .counter {
+                position: static;
+            }
+            
+            .btn-next {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wizard-container">
+        <!-- HEADER SIN BOTÓN VOLVER -->
+        <header class="wizard-header">
+            <div class="logo-area">
+                <span class="logo-iee">IEE</span>
+                <span class="product-badge">Evaluación Humana</span>
+            </div>
+        </header>
+
+        <!-- FORMULARIO DE REGISTRO CON VALIDACIÓN CURP -->
+        <div class="registration-card">
+            <div class="registration-title">
+                <i class="fas fa-user-circle"></i>
+                Datos del evaluado
+            </div>
+            <div class="registration-grid">
+                <div class="form-group">
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" id="nombreInput" class="form-input" placeholder="Ej: JUAN PEREZ LOPEZ" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">CURP</label>
+                    <input type="text" id="curpInput" class="form-input" placeholder="PELJ890101HDFLRN09" maxlength="18" autocomplete="off" style="text-transform:uppercase">
+                    <div class="form-hint">18 caracteres: Letras y números</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Fecha de nacimiento</label>
+                    <input type="date" id="fechaInput" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Puesto</label>
+                    <input type="text" id="puestoInput" class="form-input" placeholder="Ej: GERENTE DE VENTAS" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Antigüedad (años)</label>
+                    <input type="number" id="antiguedadInput" class="form-input" placeholder="Ej: 5" min="0" step="0.5" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROGRESS BAR (SIN NOMBRE DE DIMENSIÓN) -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="progress-percent" id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- QUESTION CARD -->
+        <div class="question-card" id="questionContainer">
+            <div class="dimension-code" id="dimensionCode">D1</div>
+            <h2 class="question-text" id="questionText">Cargando pregunta...</h2>
+            <div class="options-grid" id="optionsGrid"></div>
+        </div>
+
+        <!-- NAVIGATION (SOLO SIGUIENTE/FINALIZAR) -->
+        <div class="navigation">
+            <button class="btn-next" id="btnNext" disabled>
+                <span>Siguiente</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <span class="counter">
+                <span id="currentQuestion">1</span> / <span id="totalQuestions">25</span>
+            </span>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // ============================================
+        // WIZARD PERSONAS - VERSIÓN FINAL
+        // SIN BOTÓN VOLVER, SIN NOMBRE DE DIMENSIONES
+        // VALIDACIÓN CURP AUTOMÁTICA
+        // ============================================
+
+        class IEEWizard {
+            constructor() {
+                // SOLO CÓDIGOS D1, D2, D3, D4, D5 (SIN NOMBRE)
+                this.dimensionCodes = {
+                    'Liderazgo': 'D1',
+                    'Clima': 'D2',
+                    'Retención': 'D3',
+                    'Desempeño': 'D4',
+                    'Adaptación': 'D5'
+                };
+
+                this.state = {
+                    currentQuestion: 0,
+                    answers: new Array(25).fill(null),
+                    registro: {
+                        nombre: '',
+                        curp: '',
+                        fecha: '',
+                        puesto: '',
+                        antiguedad: ''
+                    }
+                };
+
+                this.questions = [
+                    // Liderazgo (1-5) - D1
+                    {
+                        id: 1,
+                        dimension: 'Liderazgo',
+                        code: 'D1',
+                        text: '¿Cómo se distribuye la autoridad en situaciones críticas?',
+                        options: [
+                            'Claramente definida y documentada',
+                            'Definida pero no siempre seguida',
+                            'Improvisada según la situación',
+                            'Centralizada en una persona'
+                        ]
+                    },
+                    {
+                        id: 2,
+                        dimension: 'Liderazgo',
+                        code: 'D1',
+                        text: '¿Cómo se toman las decisiones importantes?',
+                        options: [
+                            'Con participación del equipo y análisis',
+                            'Consultando a mandos medios',
+                            'Solo por la alta dirección',
+                            'Unilateralmente por el dueño/CEO'
+                        ]
+                    },
+                    {
+                        id: 3,
+                        dimension: 'Liderazgo',
+                        code: 'D1',
+                        text: '¿Cómo se comunica la visión estratégica?',
+                        options: [
+                            'Comunicación clara y constante a todos los niveles',
+                            'Reuniones periódicas con mandos',
+                            'Comunicados ocasionales',
+                            'No se comunica formalmente'
+                        ]
+                    },
+                    {
+                        id: 4,
+                        dimension: 'Liderazgo',
+                        code: 'D1',
+                        text: '¿Cómo se desarrolla el liderazgo interno?',
+                        options: [
+                            'Programa formal de desarrollo de líderes',
+                            'Mentoría informal',
+                            'Capacitaciones esporádicas',
+                            'No hay desarrollo planificado'
+                        ]
+                    },
+                    {
+                        id: 5,
+                        dimension: 'Liderazgo',
+                        code: 'D1',
+                        text: '¿Cómo se reconoce el desempeño sobresaliente?',
+                        options: [
+                            'Reconocimiento público y privado consistente',
+                            'Bonos o incentivos económicos',
+                            'Reconocimiento ocasional',
+                            'No hay reconocimiento formal'
+                        ]
+                    },
+                    // Clima (6-10) - D2
+                    {
+                        id: 6,
+                        dimension: 'Clima',
+                        code: 'D2',
+                        text: '¿Cómo es el ambiente laboral?',
+                        options: [
+                            'Colaborativo, de confianza y apoyo mutuo',
+                            'Profesional pero distante',
+                            'Competitivo y tenso',
+                            'Individualista y fragmentado'
+                        ]
+                    },
+                    {
+                        id: 7,
+                        dimension: 'Clima',
+                        code: 'D2',
+                        text: '¿Cómo se resuelven los conflictos?',
+                        options: [
+                            'Mediación constructiva y oportuna',
+                            'Se escalan a niveles superiores',
+                            'Se evitan hasta que escalan',
+                            'No se resuelven formalmente'
+                        ]
+                    },
+                    {
+                        id: 8,
+                        dimension: 'Clima',
+                        code: 'D2',
+                        text: '¿Cómo es la comunicación entre áreas?',
+                        options: [
+                            'Fluida, abierta y colaborativa',
+                            'Formal y estructurada',
+                            'Fragmentada en silos',
+                            'Inexistente o conflictiva'
+                        ]
+                    },
+                    {
+                        id: 9,
+                        dimension: 'Clima',
+                        code: 'D2',
+                        text: '¿Cómo es el equilibrio vida-trabajo?',
+                        options: [
+                            'Respetado y promovido activamente',
+                            'Respetado pero no promovido',
+                            'Se espera disponibilidad constante',
+                            'Inexistente, el trabajo es prioridad'
+                        ]
+                    },
+                    {
+                        id: 10,
+                        dimension: 'Clima',
+                        code: 'D2',
+                        text: '¿Cómo se celebran los logros?',
+                        options: [
+                            'Celebraciones regulares y significativas',
+                            'Eventos sociales periódicos',
+                            'Reconocimiento informal',
+                            'No se celebran'
+                        ]
+                    },
+                    // Retención (11-15) - D3
+                    {
+                        id: 11,
+                        dimension: 'Retención',
+                        code: 'D3',
+                        text: '¿Cuál es la rotación de personal clave?',
+                        options: [
+                            'Menos del 5% anual',
+                            'Entre 5% y 15% anual',
+                            'Entre 15% y 30% anual',
+                            'Más del 30% anual'
+                        ]
+                    },
+                    {
+                        id: 12,
+                        dimension: 'Retención',
+                        code: 'D3',
+                        text: '¿Cómo se gestionan las promociones?',
+                        options: [
+                            'Criterios transparentes y equitativos',
+                            'Basadas en desempeño principalmente',
+                            'Basadas en antigüedad',
+                            'No hay criterios claros'
+                        ]
+                    },
+                    {
+                        id: 13,
+                        dimension: 'Retención',
+                        code: 'D3',
+                        text: '¿Cómo es la compensación vs mercado?',
+                        options: [
+                            'Superior al promedio del mercado',
+                            'En línea con el mercado',
+                            'Ligeramente por debajo',
+                            'Significativamente por debajo'
+                        ]
+                    },
+                    {
+                        id: 14,
+                        dimension: 'Retención',
+                        code: 'D3',
+                        text: '¿Cómo se manejan las entrevistas de salida?',
+                        options: [
+                            'Sistemáticas con análisis de datos',
+                            'Ocasionales sin seguimiento',
+                            'Solo para posiciones clave',
+                            'No se realizan'
+                        ]
+                    },
+                    {
+                        id: 15,
+                        dimension: 'Retención',
+                        code: 'D3',
+                        text: '¿Cómo se identifica el talento de alto potencial?',
+                        options: [
+                            'Programa formal de identificación',
+                            'Recomendación de gerentes',
+                            'Evaluaciones de desempeño',
+                            'No se identifica'
+                        ]
+                    },
+                    // Desempeño (16-20) - D4
+                    {
+                        id: 16,
+                        dimension: 'Desempeño',
+                        code: 'D4',
+                        text: '¿Cómo se evalúa el desempeño?',
+                        options: [
+                            'Evaluación 360° con feedback continuo',
+                            'Evaluación anual formal',
+                            'Evaluación informal',
+                            'No hay evaluación formal'
+                        ]
+                    },
+                    {
+                        id: 17,
+                        dimension: 'Desempeño',
+                        code: 'D4',
+                        text: '¿Cómo se establecen los objetivos?',
+                        options: [
+                            'OKRs o metas SMART alineadas',
+                            'Objetivos departamentales',
+                            'Tareas asignadas sin métricas',
+                            'No hay objetivos formales'
+                        ]
+                    },
+                    {
+                        id: 18,
+                        dimension: 'Desempeño',
+                        code: 'D4',
+                        text: '¿Cómo se maneja el bajo desempeño?',
+                        options: [
+                            'Plan de mejora con seguimiento',
+                            'Advertencia verbal',
+                            'Medidas disciplinarias',
+                            'Se ignora hasta que renuncian'
+                        ]
+                    },
+                    {
+                        id: 19,
+                        dimension: 'Desempeño',
+                        code: 'D4',
+                        text: '¿Cómo se vincula el desempeño a compensación?',
+                        options: [
+                            'Bonos claramente vinculados a metas',
+                            'Ajustes salariales por desempeño',
+                            'Bono general sin diferenciación',
+                            'No hay vínculo'
+                        ]
+                    },
+                    {
+                        id: 20,
+                        dimension: 'Desempeño',
+                        code: 'D4',
+                        text: '¿Cómo se da el feedback continuo?',
+                        options: [
+                            'Reuniones one-on-one regulares',
+                            'Feedback en proyectos específicos',
+                            'Solo en evaluaciones formales',
+                            'No hay feedback continuo'
+                        ]
+                    },
+                    // Adaptación (21-25) - D5
+                    {
+                        id: 21,
+                        dimension: 'Adaptación',
+                        code: 'D5',
+                        text: '¿Cómo responde la organización al cambio?',
+                        options: [
+                            'Ágil y proactiva',
+                            'Adaptativa pero lenta',
+                            'Resistente al cambio',
+                            'Reactiva solo cuando es necesario'
+                        ]
+                    },
+                    {
+                        id: 22,
+                        dimension: 'Adaptación',
+                        code: 'D5',
+                        text: '¿Cómo se gestionan los cambios?',
+                        options: [
+                            'Gestión del cambio estructurada',
+                            'Comunicación sin plan',
+                            'Cambios impuestos',
+                            'No se gestionan'
+                        ]
+                    },
+                    {
+                        id: 23,
+                        dimension: 'Adaptación',
+                        code: 'D5',
+                        text: '¿Cómo se fomenta la innovación?',
+                        options: [
+                            'Programas de innovación y experimentación',
+                            'Sugerencias sin presupuesto',
+                            'Ideal pero no implementado',
+                            'No se fomenta'
+                        ]
+                    },
+                    {
+                        id: 24,
+                        dimension: 'Adaptación',
+                        code: 'D5',
+                        text: '¿Cómo se aprende de los errores?',
+                        options: [
+                            'Análisis de causa raíz y mejora',
+                            'Se identifican pero no se corrigen',
+                            'Se ocultan o se culpa',
+                            'No se analizan'
+                        ]
+                    },
+                    {
+                        id: 25,
+                        dimension: 'Adaptación',
+                        code: 'D5',
+                        text: '¿Cómo es la tolerancia al riesgo?',
+                        options: [
+                            'Alta, se fomenta experimentar',
+                            'Moderada, riesgo calculado',
+                            'Baja, se evitan riesgos',
+                            'Nula, solo procesos establecidos'
+                        ]
+                    }
+                ];
+
+                this.elements = {
+                    questionContainer: document.getElementById('questionContainer'),
+                    btnNext: document.getElementById('btnNext'),
+                    progressPercent: document.getElementById('progressPercent'),
+                    progressFill: document.getElementById('progressFill'),
+                    currentQuestion: document.getElementById('currentQuestion'),
+                    totalQuestions: document.getElementById('totalQuestions'),
+                    dimensionCode: document.getElementById('dimensionCode'),
+                    questionText: document.getElementById('questionText'),
+                    optionsGrid: document.getElementById('optionsGrid'),
+                    // Registro
+                    nombreInput: document.getElementById('nombreInput'),
+                    curpInput: document.getElementById('curpInput'),
+                    fechaInput: document.getElementById('fechaInput'),
+                    puestoInput: document.getElementById('puestoInput'),
+                    antiguedadInput: document.getElementById('antiguedadInput')
+                };
+
+                this.init();
+            }
+
+            init() {
+                console.log('✅ Inicializando wizard...');
+                
+                // Verificar autenticación
+                if (typeof IEEAuth === 'undefined' || !IEEAuth.isAuthenticated()) {
+                    window.location.href = 'auth-personas.html';
+                    return;
+                }
+
+                if (this.elements.totalQuestions) {
+                    this.elements.totalQuestions.textContent = this.questions.length;
+                }
+                
+                this.bindEvents();
+                this.setupCURPValidation();
+                this.renderQuestion();
+                this.updateProgress();
+                this.loadRegistro();
+                
+                console.log('✅ Wizard listo');
+            }
+
+            bindEvents() {
+                this.elements.btnNext.addEventListener('click', () => this.nextQuestion());
+                
+                // Guardar registro automáticamente
+                ['nombreInput', 'curpInput', 'fechaInput', 'puestoInput', 'antiguedadInput'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('input', () => this.saveRegistro());
+                    }
+                });
+            }
+
+            // Validación CURP automática
+            setupCURPValidation() {
+                const curpInput = this.elements.curpInput;
+                if (!curpInput) return;
+
+                // Forzar mayúsculas
+                curpInput.addEventListener('input', function(e) {
+                    this.value = this.value.toUpperCase();
+                });
+
+                // Validar formato CURP
+                curpInput.addEventListener('blur', () => {
+                    const curp = curpInput.value;
+                    const curpRegex = /^[A-Z]{4}\d{6}[A-Z]{6}\d{2}$/;
+                    
+                    if (curp && !curpRegex.test(curp)) {
+                        curpInput.style.borderColor = '#EF4444';
+                        // No bloqueamos, solo advertimos visualmente
+                    } else {
+                        curpInput.style.borderColor = '';
+                    }
+                });
+            }
+
+            saveRegistro() {
+                this.state.registro = {
+                    nombre: this.elements.nombreInput?.value || '',
+                    curp: this.elements.curpInput?.value || '',
+                    fecha: this.elements.fechaInput?.value || '',
+                    puesto: this.elements.puestoInput?.value || '',
+                    antiguedad: this.elements.antiguedadInput?.value || ''
+                };
+                sessionStorage.setItem('iee_registro', JSON.stringify(this.state.registro));
+            }
+
+            loadRegistro() {
+                try {
+                    const saved = sessionStorage.getItem('iee_registro');
+                    if (saved) {
+                        this.state.registro = JSON.parse(saved);
+                        if (this.elements.nombreInput) this.elements.nombreInput.value = this.state.registro.nombre || '';
+                        if (this.elements.curpInput) this.elements.curpInput.value = this.state.registro.curp || '';
+                        if (this.elements.fechaInput) this.elements.fechaInput.value = this.state.registro.fecha || '';
+                        if (this.elements.puestoInput) this.elements.puestoInput.value = this.state.registro.puesto || '';
+                        if (this.elements.antiguedadInput) this.elements.antiguedadInput.value = this.state.registro.antiguedad || '';
+                    }
+                } catch (e) {
+                    console.warn('Error cargando registro:', e);
+                }
+            }
+
+            renderQuestion() {
+                if (!this.questions || this.questions.length === 0) {
+                    console.error('❌ No hay preguntas');
+                    return;
+                }
+
+                const q = this.questions[this.state.currentQuestion];
+                
+                // SOLO mostrar D1, D2, D3... (sin nombre de dimensión)
+                if (this.elements.dimensionCode) {
+                    this.elements.dimensionCode.textContent = q.code;
+                }
+                
+                if (this.elements.questionText) {
+                    this.elements.questionText.textContent = q.text;
+                }
+                
+                if (this.elements.currentQuestion) {
+                    this.elements.currentQuestion.textContent = this.state.currentQuestion + 1;
+                }
+
+                // Renderizar opciones
+                if (this.elements.optionsGrid) {
+                    this.elements.optionsGrid.innerHTML = q.options.map((opt, idx) => `
+                        <div class="option-card ${this.state.answers[this.state.currentQuestion] === idx ? 'selected' : ''}" data-index="${idx}">
+                            <div class="option-letter">${String.fromCharCode(65 + idx)}</div>
+                            <div class="option-text">${opt}</div>
+                        </div>
+                    `).join('');
+
+                    // Agregar event listeners
+                    setTimeout(() => {
+                        this.elements.optionsGrid.querySelectorAll('.option-card').forEach(card => {
+                            card.addEventListener('click', (e) => {
+                                const index = parseInt(card.getAttribute('data-index'));
+                                this.selectOption(index);
+                            });
+                        });
+                    }, 50);
+                }
+
+                this.updateNavButtons();
+                console.log(`✅ Pregunta ${this.state.currentQuestion + 1} renderizada`);
+            }
+
+            selectOption(index) {
+                this.state.answers[this.state.currentQuestion] = index;
+                
+                const cards = this.elements.optionsGrid?.querySelectorAll('.option-card');
+                cards?.forEach(c => c.classList.remove('selected'));
+                
+                const selected = this.elements.optionsGrid?.querySelector(`.option-card[data-index="${index}"]`);
+                selected?.classList.add('selected');
+                
+                this.elements.btnNext.disabled = false;
+            }
+
+            updateNavButtons() {
+                const hasAnswer = this.state.answers[this.state.currentQuestion] !== null;
+                const isLast = this.state.currentQuestion === this.questions.length - 1;
+                
+                this.elements.btnNext.disabled = !hasAnswer;
+                this.elements.btnNext.innerHTML = isLast 
+                    ? '<span>Finalizar</span><i class="fas fa-check"></i>'
+                    : '<span>Siguiente</span><i class="fas fa-arrow-right"></i>';
+            }
+
+            updateProgress() {
+                const progress = ((this.state.currentQuestion + 1) / this.questions.length) * 100;
+                this.elements.progressFill.style.width = `${progress}%`;
+                this.elements.progressPercent.textContent = `${Math.round(progress)}%`;
+            }
+
+            nextQuestion() {
+                if (this.state.answers[this.state.currentQuestion] === null) {
+                    alert('Por favor selecciona una opción');
+                    return;
+                }
+
+                if (this.state.currentQuestion === this.questions.length - 1) {
+                    this.processResults();
+                    return;
+                }
+
+                this.state.currentQuestion++;
+                this.renderQuestion();
+                this.updateProgress();
+            }
+
+            processResults() {
+                // Guardar registro antes de procesar
+                this.saveRegistro();
+                
+                // Calcular puntuaciones
+                const scores = {};
+                const counts = {};
+
+                this.questions.forEach((q, idx) => {
+                    const answer = this.state.answers[idx];
+                    if (answer !== null) {
+                        const score = 4 - answer;
+                        if (!scores[q.dimension]) {
+                            scores[q.dimension] = 0;
+                            counts[q.dimension] = 0;
+                        }
+                        scores[q.dimension] += score;
+                        counts[q.dimension]++;
+                    }
+                });
+
+                const results = {
+                    product: 'personas',
+                    registro: this.state.registro,
+                    scores: Object.fromEntries(
+                        Object.entries(scores).map(([k, v]) => [k, (v / counts[k]).toFixed(1)])
+                    ),
+                    answers: this.state.answers,
+                    timestamp: new Date().toISOString()
+                };
+
+                sessionStorage.setItem('iee_results', JSON.stringify(results));
+                window.location.href = 'results-personas.html';
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ DOM cargado, iniciando wizard...');
+            window.ieeWizard = new IEEWizard();
+        });
+    </script>
+</body>
+</html>

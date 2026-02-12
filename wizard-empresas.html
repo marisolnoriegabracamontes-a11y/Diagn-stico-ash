@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IEE Empresas | Estabilidad Estructural</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos (mismos que wizard-personas.html) -->
+    <style>
+        /* ============================================
+           COPIAR LOS MISMOS ESTILOS DE wizard-personas.html
+           ============================================ */
+        :root {
+            --platinum: #F5F5F7;
+            --carbon: #1A1A1A;
+            --deep-purple: #2D1B33;
+            --pure-white: #FFFFFF;
+            --gold-matte: #C9A961;
+            --steel: #6B7280;
+            --border-subtle: #E8E8EA;
+            --success-green: #10B981;
+            --warning-yellow: #F59E0B;
+            --error-red: #EF4444;
+            
+            --spacing-xl: 120px;
+            --spacing-lg: 80px;
+            --spacing-md: 40px;
+            --spacing-sm: 24px;
+            --spacing-xs: 16px;
+            
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter Tight', -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--platinum) 0%, #E8E6E1 100%);
+            color: var(--carbon);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(45, 27, 51, 0.03) 0%, transparent 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .wizard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .wizard-header {
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .wizard-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .logo-back {
+            font-size: 14px;
+            letter-spacing: 6px;
+            color: var(--carbon);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .logo-back:hover {
+            border-color: var(--deep-purple);
+            background: var(--deep-purple);
+            color: white;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-ash {
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--carbon);
+        }
+
+        .logo-product {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-matte);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .product-badge {
+            background: var(--deep-purple);
+            color: var(--gold-matte);
+            padding: 8px 24px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: 1px solid var(--gold-matte);
+            display: inline-block;
+        }
+
+        .progress-container {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--steel);
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 1px;
+            background: var(--border-subtle);
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--deep-purple);
+            transition: width 0.6s ease;
+        }
+
+        .progress-fill:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 7px;
+            height: 7px;
+            background: var(--gold-matte);
+            border-radius: 50%;
+        }
+
+        .question-container {
+            background: var(--pure-white);
+            border: 1px solid var(--border-subtle);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .question-container:hover {
+            border-color: var(--deep-purple);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--deep-purple);
+            transition: height 0.5s ease;
+        }
+
+        .question-container:hover:before {
+            height: 100%;
+        }
+
+        .question-header {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .dimension-badge {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-matte);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--gold-matte);
+        }
+
+        .question-title {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-sm);
+            color: var(--carbon);
+        }
+
+        .question-description {
+            font-size: 15px;
+            color: var(--steel);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            margin-top: var(--spacing-lg);
+        }
+
+        .option-card {
+            border: 1px solid var(--border-subtle);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--pure-white);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .option-card:hover {
+            border-color: var(--deep-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45, 27, 51, 0.1);
+        }
+
+        .option-card.selected {
+            border-color: var(--deep-purple);
+            background: var(--deep-purple);
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--border-subtle);
+            background: var(--pure-white);
+            color: var(--carbon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .option-card.selected .option-letter {
+            background: var(--gold-matte);
+            border-color: var(--gold-matte);
+            color: var(--deep-purple);
+        }
+
+        .option-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: inherit;
+            flex: 1;
+        }
+
+        .option-card.selected .option-text {
+            color: var(--pure-white);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border-subtle);
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-nav {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            padding: 16px 32px;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--carbon);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            border-color: var(--deep-purple);
+            background: var(--deep-purple);
+            color: var(--pure-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45, 27, 51, 0.2);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+            background: var(--deep-purple);
+            color: var(--pure-white);
+            border-color: var(--deep-purple);
+            box-shadow: 0 4px 12px rgba(45, 27, 51, 0.15);
+        }
+
+        .btn-next:hover:not(:disabled) {
+            background: transparent;
+            color: var(--deep-purple);
+        }
+
+        .counter {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--steel);
+            text-transform: uppercase;
+        }
+
+        .counter span {
+            color: var(--deep-purple);
+            font-weight: 600;
+            margin: 0 4px;
+        }
+
+        .loading-screen, .completion-screen {
+            background: var(--pure-white);
+            border: 1px solid var(--border-subtle);
+            padding: var(--spacing-xl);
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--border-subtle);
+            border-top: 2px solid var(--deep-purple);
+            border-right: 2px solid var(--gold-matte);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .completion-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--deep-purple);
+            color: var(--gold-matte);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto var(--spacing-lg);
+            border: 1px solid var(--gold-matte);
+        }
+
+        .completion-icon.error {
+            background: var(--error-red);
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .wizard-container {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 60px;
+                --spacing-lg: 40px;
+                --spacing-md: 24px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+            
+            .btn-nav {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .question-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wizard-container {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+            
+            .question-container {
+                padding: var(--spacing-md);
+            }
+            
+            .option-card {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="wizard-container">
+        <!-- HEADER -->
+        <header class="wizard-header">
+            <div class="header-content">
+                <div class="wizard-logo">
+                    <a href="auth-empresas.html" class="logo-back">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                    <div class="logo-text">
+                        <span class="logo-ash">IEE</span>
+                        <span class="logo-product">Empresas</span>
+                    </div>
+                </div>
+                <div class="product-badge">
+                    ESTABILIDAD ESTRUCTURAL
+                </div>
+            </div>
+        </header>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-container">
+            <div class="progress-info">
+                <span id="currentDimension">Gobernanza</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- ✅ QUESTION CONTAINER CON OPTIONS GRID -->
+        <main class="question-container" id="questionContainer">
+            <div class="question-header">
+                <div class="dimension-badge" id="dimensionBadge">Gobernanza</div>
+                <h2 class="question-title" id="questionText">Cargando pregunta...</h2>
+                <p class="question-description" id="questionDesc">
+                    Selecciona la opción que mejor describa tu situación actual
+                </p>
+            </div>
+            
+            <!-- ✅ OPTIONS GRID -->
+            <div class="options-grid" id="optionsGrid">
+                <!-- Las opciones se cargarán dinámicamente -->
+            </div>
+        </main>
+
+        <!-- NAVIGATION -->
+        <div class="navigation">
+            <button class="btn-nav" id="btnPrev" disabled>
+                <i class="fas fa-arrow-left"></i> Anterior
+            </button>
+            
+            <div class="counter">
+                Pregunta <span id="currentQuestion">1</span>/25
+            </div>
+            
+            <button class="btn-nav btn-next" id="btnNext">
+                Siguiente
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ✅ SCRIPTS CORREGIDOS -->
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/wizard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar autenticación con IEEAuth
+            if (typeof IEEAuth !== 'undefined' && !IEEAuth.isAuthenticated()) {
+                window.location.href = 'auth-empresas.html';
+                return;
+            }
+            
+            // Inicializar wizard con IEEWizard
+            if (typeof IEEWizard !== 'undefined') {
+                window.ieeWizard = new IEEWizard({
+                    product: 'empresas',
+                    totalQuestions: 25
+                });
+            } else {
+                console.error('Error: IEEWizard no está definido');
+            }
+        });
+    </script>
+</body>
+</html>

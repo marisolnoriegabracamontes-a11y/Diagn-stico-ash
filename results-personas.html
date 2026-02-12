@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IEE | Resultados Personas</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-purple: #2D1B33;
+            --gold-matte: #C9A961;
+            --platinum: #F5F5F7;
+            --carbon: #1A1A1A;
+            --steel: #6B7280;
+            --border-subtle: #E8E8EA;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Inter Tight', sans-serif;
+            background: linear-gradient(135deg, var(--platinum) 0%, #E8E6E1 100%);
+            color: var(--carbon);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border: 1px solid var(--border-subtle);
+            padding: 48px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--deep-purple) 0%, var(--gold-matte) 100%);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--deep-purple);
+            margin-bottom: 32px;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 16px;
+            color: var(--carbon);
+        }
+
+        p {
+            color: var(--steel);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--deep-purple);
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border: 1px solid var(--deep-purple);
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--deep-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45,27,51,0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">IEE</div>
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h1>Diagnóstico Completado</h1>
+        <p>
+            Tu evaluación de Estabilidad Humana ha sido procesada exitosamente.<br>
+            Un consultor IEE analizará los resultados y se contactará contigo.
+        </p>
+        <a href="index.html" class="btn">
+            <i class="fas fa-arrow-left"></i>
+            Volver al inicio
+        </a>
+    </div>
+
+    <script>
+        // Mostrar resultados guardados (opcional)
+        try {
+            const results = JSON.parse(sessionStorage.getItem('iee_results'));
+            if (results) {
+                console.log('Resultados:', results);
+            }
+        } catch(e) {}
+    </script>
+</body>
+</html>

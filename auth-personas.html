@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IEE | Acceso Personas</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ESTILOS PREMIUM IEE - SOLO ESTOS, NADA MÁS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    
+    <!-- NO PONGAS NINGÚN <style> ADICIONAL -->
+    
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Header -->
+        <header class="auth-header">
+            <div class="auth-header-content">
+                <div class="auth-logo">
+                    <a href="index.html" class="logo-back">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                    <div class="logo-text">
+                        <span class="logo-ash">IEE</span>
+                        <span class="logo-product">Personas</span>
+                    </div>
+                </div>
+                <div class="product-badge">
+                    ESTABILIDAD HUMANA
+                </div>
+            </div>
+            
+            <div class="auth-progress">
+                <div class="progress-step active">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Acceso</span>
+                </div>
+                <div class="progress-step">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Diagnóstico</span>
+                </div>
+                <div class="progress-step">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Resultados</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="auth-main">
+            <div class="auth-card">
+                <div class="auth-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                
+                <h1 class="auth-title">Acceso Restringido</h1>
+                <p class="auth-subtitle">
+                    Ingresa la clave única proporcionada por tu consultor IEE
+                </p>
+
+                <!-- Error Message -->
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Clave verificada. Redirigiendo...</span>
+                </div>
+
+                <!-- Form -->
+                <form id="authForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="claveAcceso" class="form-label">
+                            <i class="fas fa-key"></i>
+                            Clave de Acceso
+                        </label>
+                        <div class="input-with-suffix">
+                            <input 
+                                type="text" 
+                                id="claveAcceso" 
+                                name="claveAcceso"
+                                placeholder="IEE-P-XXXX-XXXX-XXXX"
+                                autocomplete="off"
+                                autocapitalize="characters"
+                                spellcheck="false"
+                                required
+                                class="form-input">
+                            <button type="button" class="input-suffix" id="toggleVisibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-hint">
+                            <i class="fas fa-info-circle"></i>
+                            Las claves comienzan con <strong>IEE-P-</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailContacto" class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email de contacto
+                        </label>
+                        <input 
+                            type="email" 
+                            id="emailContacto" 
+                            name="emailContacto"
+                            placeholder="director@empresa.com"
+                            required
+                            class="form-input">
+                        <div class="form-hint">
+                            <i class="fas fa-info-circle"></i>
+                            Recibirás el diagnóstico completo
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <span>Verificar acceso</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        
+                        <a href="index.html" class="btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+
+                <!-- Security Info -->
+                <div class="security-info">
+                    <div class="info-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Diagnóstico de Estabilidad Humana</h3>
+                    </div>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>5 dimensiones</strong> del capital humano</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Liderazgo, clima y retención</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Desempeño y adaptación</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Análisis ejecutivo personalizado</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="support-section">
+                    <p class="support-text">
+                        <i class="fas fa-question-circle"></i>
+                        ¿Problemas de acceso?
+                        <a href="mailto:marisol.noriega.bracamontes@gmail.com">
+                            Contacta a tu consultor
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="auth-footer">
+            <div class="footer-content">
+                <div class="footer-security">
+                    <i class="fas fa-user-shield"></i>
+                    <span>IEE Diagnóstico Ejecutivo © 2024</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Confidencialidad</a>
+                    <span class="footer-divider">•</span>
+                    <a href="#" class="footer-link">Protección de datos</a>
+                    <span class="footer-divider">•</span>
+                    <a href="#" class="footer-link">Términos</a>
+                </div>
+            </div>
+        </footer>
+        
+<!-- SOLO CAMBIA EL SCRIPT FINAL -->
+<script src="assets/js/auth.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        window.ieeAuth = new IEEAuth({
+            product: 'personas',
+            apiBase: 'includes/',
+            debug: window.location.hostname === 'localhost'
+        });
+    });
+</script>
+</body>
+</html>

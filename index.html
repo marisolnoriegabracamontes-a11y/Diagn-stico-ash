@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IEE | Diagnóstico Ejecutivo</title>
+    
+    <!-- Fuentes Premium IEE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ESTILOS IEE EMBEDDED - 100% SEGUROS -->
+    <style>
+        /* ============================================
+           IEE DIAGNÓSTICO EJECUTIVO - ESTILOS PREMIUM
+           PÚRPURA #2D1B33 | DORADO #C9A961
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --iee-purple: #2D1B33;
+            --iee-purple-light: #3a2445;
+            --iee-purple-dark: #1a0f1f;
+            --iee-gold: #C9A961;
+            --iee-gold-light: #d4af37;
+            --iee-gold-dark: #b8941f;
+            --iee-bg: #F5F5F7;
+            --iee-gray: #6B7280;
+            --iee-border: #E8E8EA;
+            --iee-white: #FFFFFF;
+            --iee-black: #1A1A1A;
+        }
+
+        body {
+            font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--iee-bg);
+            color: var(--iee-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           HEADER PREMIUM IEE
+           ============================================ */
+        .main-header {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--iee-border);
+            margin-bottom: 64px;
+            background: var(--iee-white);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-iee {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--iee-purple);
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 12px;
+            color: var(--iee-gray);
+            letter-spacing: 2px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .header-tagline {
+            text-align: right;
+        }
+
+        .tagline-text {
+            font-size: 13px;
+            color: var(--iee-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .tagline-line {
+            height: 2px;
+            width: 60px;
+            background: var(--iee-gold);
+            margin-left: auto;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero-section {
+            margin-bottom: 80px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .title-line {
+            display: block;
+        }
+
+        .highlight {
+            color: var(--iee-gold);
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--iee-gray);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--iee-gold);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--iee-gray);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           SELECTOR DE PRODUCTOS
+           ============================================ */
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--iee-black);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            color: var(--iee-gray);
+            font-size: 16px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .card {
+            background: var(--iee-white);
+            border: 1px solid var(--iee-border);
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--iee-gold);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--iee-purple);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--iee-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--iee-purple);
+            border: 1px solid var(--iee-border);
+        }
+
+        .card-badge {
+            background: var(--iee-purple);
+            color: var(--iee-gold);
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--iee-gold);
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--iee-black);
+            letter-spacing: -0.5px;
+        }
+
+        .card-desc {
+            color: var(--iee-gray);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .card-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: var(--iee-gray);
+        }
+
+        .card-feature i {
+            width: 20px;
+            color: var(--iee-gold);
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--iee-purple);
+            color: var(--iee-white);
+            padding: 16px 32px;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: 1px solid var(--iee-purple);
+            transition: all 0.4s ease;
+            width: 100%;
+            margin-top: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--iee-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(45, 27, 51, 0.2);
+        }
+
+        .btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: translateX(6px);
+        }
+
+        /* ============================================
+           FOOTER PREMIUM
+           ============================================ */
+        .main-footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--iee-border);
+            background: var(--iee-white);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-iee {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--iee-purple);
+        }
+
+        .footer-divider {
+            color: var(--iee-border);
+            font-weight: 300;
+        }
+
+        .footer-desc {
+            font-size: 13px;
+            color: var(--iee-gray);
+            letter-spacing: 1px;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--iee-gray);
+        }
+
+        .footer-contact i {
+            color: var(--iee-gold);
+            font-size: 16px;
+        }
+
+        .footer-contact span {
+            color: var(--iee-black);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SECCIÓN DE SEGURIDAD
+           ============================================ */
+        .security-note {
+            margin-top: 48px;
+            padding: 20px;
+            background: var(--iee-bg);
+            border: 1px solid var(--iee-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--iee-gray);
+            font-size: 13px;
+        }
+
+        .security-note i {
+            color: var(--iee-gold);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .header-tagline {
+                text-align: left;
+                width: 100%;
+            }
+            
+            .tagline-line {
+                margin-left: 0;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                justify-content: center;
+            }
+            
+            .security-note {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-header {
+                padding: 24px 0;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .card {
+                padding: 24px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+            }
+            
+            .card-badge {
+                align-self: flex-start;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER PREMIUM IEE -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-iee">IEE</span>
+                    <span class="logo-sub">Diagnóstico Ejecutivo</span>
+                </div>
+                <div class="header-tagline">
+                    <span class="tagline-text">Intervención Ejecutiva Estratégica</span>
+                    <div class="tagline-line"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <h1 class="hero-title">
+                <span class="title-line">Diagnóstico de</span>
+                <span class="title-line highlight">Estabilidad Organizacional</span>
+            </h1>
+            <p class="hero-description">
+                Identifique puntos críticos de vulnerabilidad y establezca 
+                una base sólida para el crecimiento sostenible.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Dimensiones</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Precisión</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10min</span>
+                    <span class="stat-label">Promedio</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT SELECTOR -->
+        <section>
+            <div class="section-title">
+                <h2>Seleccione el ámbito de diagnóstico</h2>
+                <p>Herramientas especializadas para cada capa organizacional</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- IEE PERSONAS -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="card-badge">ESTABILIDAD HUMANA</span>
+                    </div>
+                    <h3 class="card-title">IEE Personas</h3>
+                    <p class="card-desc">
+                        Analiza la fortaleza del capital humano, liderazgo, 
+                        clima organizacional y retención de talento.
+                    </p>
+                    <div class="card-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Duración: 4-6 minutos</span>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-chart-radar"></i>
+                        <span>5 dimensiones clave</span>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reporte ejecutivo inmediato</span>
+                    </div>
+                    <a href="auth-personas.html" class="btn">
+                        <span>Iniciar Diagnóstico</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- IEE EMPRESAS -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <span class="card-badge">ESTABILIDAD ESTRUCTURAL</span>
+                    </div>
+                    <h3 class="card-title">IEE Empresas</h3>
+                    <p class="card-desc">
+                        Evalúa la arquitectura organizacional, procesos, 
+                        gobernanza y escalabilidad del modelo de negocio.
+                    </p>
+                    <div class="card-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Duración: 6-8 minutos</span>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-chart-radar"></i>
+                        <span>7 dimensiones críticas</span>
+                    </div>
+                    <div class="card-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Análisis estratégico completo</span>
+                    </div>
+                    <a href="auth-empresas.html" class="btn">
+                        <span>Iniciar Diagnóstico</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- SECCIÓN DE SEGURIDAD -->
+            <div class="security-note">
+                <i class="fas fa-shield-alt"></i>
+                <span>Sistema de acceso restringido. Se requiere clave de autorización.</span>
+            </div>
+        </section>
+
+        <!-- FOOTER PREMIUM -->
+        <!-- FOOTER PREMIUM CON ENLACES LEGALES -->
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-logo">
+            <span class="footer-iee">IEE</span>
+            <span class="footer-divider">•</span>
+            <span class="footer-desc">Diagnóstico Ejecutivo</span>
+        </div>
+        <div class="footer-contact">
+            <i class="fas fa-envelope"></i>
+            <span>marisol.noriega.bracamontes@gmail.com</span>
+        </div>
+    </div>
+    
+    <!-- ✅ ENLACES LEGALES - YA CONECTADOS -->
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid #E8E8EA;
+        flex-wrap: wrap;
+    ">
+        <a href="Aviso-privacidad.html" style="
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        ">
+            <i class="fas fa-shield-alt" style="color: #C9A961;"></i>
+            Aviso de Privacidad
+        </a>
+        
+        <span style="color: #E8E8EA;">|</span>
+        
+        <a href="Terminos-condiciones.html" style="
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        ">
+            <i class="fas fa-file-contract" style="color: #C9A961;"></i>
+            Términos y Condiciones
+        </a>
+        
+        <span style="color: #E8E8EA;">|</span>
+        
+        <a href="#" style="
+            color: #6B7280;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        ">
+            <i class="fas fa-cookie-bite" style="color: #C9A961;"></i>
+            Política de Cookies
+        </a>
+    </div>
+    
+    <div style="
+        margin-top: 24px;
+        text-align: center;
+        font-size: 11px;
+        color: #6B7280;
+        letter-spacing: 1px;
+    ">
+        © 2026 Intervención Ejecutiva Estratégica. Todos los derechos reservados.
+    </div>
+</footer>
+    </div>
+</body>
+</html>
